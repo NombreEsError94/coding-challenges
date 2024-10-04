@@ -11,10 +11,13 @@ try {
     return
 }
 
-let countFlagIndex = process.argv.indexOf("-c")
-
-if(countFlagIndex !== -1) {
+if(process.argv.indexOf("-c") !== -1) {
     const fileByteArray = Array.from(Buffer.from(data))
-    console.log(fileByteArray.length)
+    console.log(`${fileByteArray.length} ${filePathArgument}`)
     return
+}
+
+if(process.argv.indexOf("-l") !== -1) {
+    const dataByLines = data.split("\n")
+    console.log(`${dataByLines.length} ${filePathArgument}`)
 }
